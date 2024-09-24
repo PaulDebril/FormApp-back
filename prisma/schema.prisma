@@ -1,0 +1,230 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model FormationCenter {
+  id             String          @id @default(cuid())
+  name           String
+  address        String
+  phone          String
+  documents      String[]
+  logo           String
+  createdAt      DateTime        @default(now())
+  contacts       Contact[]
+  formations     Formation[]
+  intermediaires Intermediaire[]
+  interventions  Intervention[]
+  pricings       Pricing[]
+  Info           Info[]
+  Mission        Mission[]
+  Subject        Subject[]
+}
+
+model Info {
+  id                String          @id @default(cuid())
+  category          String
+  formationCenter   FormationCenter @relation(fields: [formationCenterId], references: [id])
+  formationCenterId String
+  createdAt         DateTime        @default(now())
+}
+
+model Intermediaire {
+  id                String           @id @default(cuid())
+  enterprise        String
+  entrepriseType    String
+  address           String
+  nafApe            String
+  siret             String
+  contacts          Contact[]
+  logo              String
+  email             String
+  phone             String
+  createdAt         DateTime         @default(now())
+  FormationCenter   FormationCenter? @relation(fields: [formationCenterId], references: [id])
+  formationCenterId String?
+  Pricing           Pricing[]
+  Intervention      Intervention[]
+}
+
+model Mission {
+  id                String          @id @default(cuid())
+  name              String
+  state             MissionState
+  documents         String[]
+  invoices          String[]
+  startDate         DateTime
+  endDate           DateTime
+  createdAt         DateTime        @default(now())
+  interventions     Intervention[]
+  FormationCenter   FormationCenter @relation(fields: [formationCenterId], references: [id])
+  formationCenterId String
+  contract          Contract        @relation(fields: [contractId], references: [id])
+  contractId        String
+  tasks             Task[]
+}
+
+model Contract {
+  id        String    @id @default(cuid())
+  name      String
+  pdf       String
+  createdAt DateTime  @default(now())
+  Mission   Mission[]
+}
+
+model Contact {
+  id                String           @id @default(cuid())
+  name              String
+  photo             String
+  email             String
+  phone             String
+  role              String
+  linkedin          String
+  comment           String
+  createdAt         DateTime         @default(now())
+  FormationCenter   FormationCenter? @relation(fields: [formationCenterId], references: [id])
+  formationCenterId String?
+  Intermediaire     Intermediaire?   @relation(fields: [intermediaireId], references: [id])
+  intermediaireId   String?
+  Intervention      Intervention[]
+}
+
+model Course {
+  id           String         @id @default(cuid())
+  name         String
+  plan         String
+  category     String
+  mode         CourseMode
+  space        String
+  createdAt    DateTime       @default(now())
+  subjects     Subject[]
+  Intervention Intervention[]
+}
+
+model Pricing {
+  id                String           @id @default(cuid())
+  name              String
+  price             Float
+  type              PricingType
+  createdAt         DateTime         @default(now())
+  FormationCenter   FormationCenter? @relation(fields: [formationCenterId], references: [id])
+  formationCenterId String?
+  intermediaire     Intermediaire?   @relation(fields: [intermediaireId], references: [id])
+  intermediaireId   String?
+  Intervention      Intervention[]
+}
+
+model Formation {
+  id                String           @id @default(cuid())
+  name              String
+  url               String
+  level             FormationLevel
+  documents         String[]
+  createdAt         DateTime         @default(now())
+  FormationCenter   FormationCenter? @relation(fields: [formationCenterId], references: [id])
+  formationCenterId String?
+  subjects          Subject[]
+}
+
+model Subject {
+  id                String           @id @default(cuid())
+  name              String
+  program           String
+  createdAt         DateTime         @default(now())
+  level             FormationLevel
+  Course            Course?          @relation(fields: [courseId], references: [id])
+  courseId          String?
+  Formation         Formation?       @relation(fields: [formationId], references: [id])
+  formationId       String?
+  formationCenter   FormationCenter? @relation(fields: [formationCenterId], references: [id])
+  formationCenterId String?
+  interventions     Intervention[]
+}
+
+model Intervention {
+  id                String           @id @default(cuid())
+  name              String
+  date              DateTime
+  studentNumber     Int
+  createdAt         DateTime         @default(now())
+  FormationCenter   FormationCenter? @relation(fields: [formationCenterId], references: [id])
+  formationCenterId String?
+  Mission           Mission?         @relation(fields: [missionId], references: [id])
+  missionId         String?
+  Subject           Subject?         @relation(fields: [subjectId], references: [id])
+  subjectId         String?
+  Course            Course?          @relation(fields: [courseId], references: [id])
+  courseId          String?
+  contact           Contact?         @relation(fields: [contactId], references: [id])
+  contactId         String?
+  intermediaire     Intermediaire?   @relation(fields: [intermediaireId], references: [id])
+  intermediaireId   String?
+  pricing           Pricing?         @relation(fields: [pricingId], references: [id])
+  pricingId         String?
+}
+
+model Task {
+  id        String       @id @default(cuid())
+  name      String
+  priority  TaskPriority
+  deadline  DateTime
+  createdAt DateTime     @default(now())
+  Mission   Mission?     @relation(fields: [missionId], references: [id])
+  missionId String?
+}
+
+// Enums
+
+enum FormationLevel {
+  BAC1
+  BAC2
+  BAC3
+  BAC4
+  BAC5
+}
+
+enum PricingType {
+  DAYLY
+  HOURLY
+}
+
+enum CourseMode {
+  ONLINE
+  PRESENTIAL
+}
+
+enum CourseState {
+  NOT_STARTED
+  TO_UPGRADE
+  BUILDING
+  FINISHED
+}
+
+enum MissionState {
+  NOT_STARTED
+  IN_PROGRESS
+  SEND_DOCUMENTS
+  FINISHED
+}
+
+enum TaskPriority {
+  LOW
+  MEDIUM
+  HIGH
+}
+
+enum TaskState {
+  NOT_STARTED
+  IN_PROGRESS
+  FINISHED
+}
