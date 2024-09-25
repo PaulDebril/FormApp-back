@@ -23,14 +23,11 @@ export class CreateContactDto {
   comment: string;
 
   @ApiPropertyOptional()
-  formationCenterId?: string; // Optional, since it could be null
+  formationCenterId?: string;
 
   @ApiPropertyOptional()
-  intermediaireId?: string; // Optional, since it could be null
+  intermediaireId?: string;
 
   @ApiPropertyOptional()
-  interventionIds?: string[]; // Assuming you're linking interventions by their IDs
-
-  @ApiPropertyOptional()
-  createdAt?: Date; // Optional, to allow setting a custom creation date
+  interventionIds?: string[];
 }

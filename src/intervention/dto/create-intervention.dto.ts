@@ -11,9 +11,6 @@ export class CreateInterventionDto {
   studentNumber: number;
 
   @ApiPropertyOptional()
-  createdAt?: Date;
-
-  @ApiPropertyOptional()
   formationCenterId?: string;
 
   @ApiPropertyOptional()

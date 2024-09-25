@@ -17,9 +17,6 @@ export class CreateCourseDto {
   space: string;
 
   @ApiPropertyOptional()
-  createdAt?: Date;
-
-  @ApiPropertyOptional()
   subjectIds?: string[]; 
 
   @ApiPropertyOptional()

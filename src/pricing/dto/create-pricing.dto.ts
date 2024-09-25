@@ -12,9 +12,6 @@ export class CreatePricingDto {
   type: PricingType;
 
   @ApiPropertyOptional()
-  createdAt?: Date;
-
-  @ApiPropertyOptional()
   formationCenterId?: string;
 
   @ApiPropertyOptional()

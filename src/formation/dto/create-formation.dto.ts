@@ -15,9 +15,6 @@ export class CreateFormationDto {
   documents?: string[];
 
   @ApiPropertyOptional()
-  createdAt?: Date;
-
-  @ApiPropertyOptional()
   formationCenterId?: string; 
 
   @ApiPropertyOptional()

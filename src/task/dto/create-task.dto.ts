@@ -12,8 +12,5 @@ export class CreateTaskDto {
   deadline: Date;
 
   @ApiPropertyOptional()
-  createdAt?: Date;
-
-  @ApiPropertyOptional()
   missionId?: string;
 }

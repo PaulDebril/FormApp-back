@@ -9,7 +9,4 @@ export class CreateContractDto {
 
   @ApiPropertyOptional()
   missionIds: string[];
-
-  @ApiPropertyOptional()
-  createdAt?: Date;
 }
