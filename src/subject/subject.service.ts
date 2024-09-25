@@ -1,9 +1,11 @@
 import { Injectable } from '@nestjs/common';
 import { CreateSubjectDto } from './dto/create-subject.dto';
 import { UpdateSubjectDto } from './dto/update-subject.dto';
+import { PrismaService } from "../prisma/prisma.service";
 
 @Injectable()
 export class SubjectService {
+  constructor(private prisma: PrismaService) {}
   create(createSubjectDto: CreateSubjectDto) {
     return 'This action adds a new subject';
   }

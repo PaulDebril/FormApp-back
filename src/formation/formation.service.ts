@@ -1,9 +1,11 @@
 import { Injectable } from '@nestjs/common';
 import { CreateFormationDto } from './dto/create-formation.dto';
 import { UpdateFormationDto } from './dto/update-formation.dto';
+import { PrismaService } from "../prisma/prisma.service";
 
 @Injectable()
 export class FormationService {
+  constructor(private prisma: PrismaService) {}
   create(createFormationDto: CreateFormationDto) {
     return 'This action adds a new formation';
   }

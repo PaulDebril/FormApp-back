@@ -1,9 +1,11 @@
 import { Injectable } from '@nestjs/common';
 import { CreateInterventionDto } from './dto/create-intervention.dto';
 import { UpdateInterventionDto } from './dto/update-intervention.dto';
+import { PrismaService } from "../prisma/prisma.service";
 
 @Injectable()
 export class InterventionService {
+  constructor(private prisma: PrismaService) {}
   create(createInterventionDto: CreateInterventionDto) {
     return 'This action adds a new intervention';
   }
