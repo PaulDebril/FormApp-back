@@ -6,6 +6,13 @@ import { FormationCenterModule } from './formation-center/formation-center.modul
 import { InfoModule } from './info/info.module';
 import { IntermediaireModule } from './intermediaire/intermediaire.module';
 import { MissionModule } from './mission/mission.module';
+import { FormationModule } from './formation/formation.module';
+import { ContactModule } from './contact/contact.module';
+import { CourseModule } from './course/course.module';
+import { PricingModule } from './pricing/pricing.module';
+import { SubjectModule } from './subject/subject.module';
+import { TaskModule } from './task/task.module';
+import { InterventionModule } from './intervention/intervention.module';
 
 @Module({
   imports: [
@@ -13,7 +20,15 @@ import { MissionModule } from './mission/mission.module';
     FormationCenterModule,
     InfoModule,
     IntermediaireModule,
+    InterventionModule,
     MissionModule,
+    FormationModule,
+    ContactModule,
+    CourseModule,
+    MissionModule,
+    PricingModule,
+    SubjectModule,
+    TaskModule,
   ],
   controllers: [AppController],
   providers: [AppService],
