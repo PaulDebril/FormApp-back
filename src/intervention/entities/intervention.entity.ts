@@ -5,6 +5,7 @@ import {
   Mission,
   Subject,
   Course,
+  Contact,
 } from '@prisma/client';
 export class Intervention {
   id: string;
@@ -24,4 +25,6 @@ export class Intervention {
   intermediaireId: string;
   pricing: Pricing;
   pricingId: string;
+  contact: Contact;
+  contactId: string;
 }
