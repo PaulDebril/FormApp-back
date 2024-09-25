@@ -1,4 +1,10 @@
-import { FormationCenter, FormationLevel } from '@prisma/client';
+import {
+  Course,
+  Formation,
+  FormationCenter,
+  FormationLevel,
+  Intervention,
+} from '@prisma/client';
 
 export class Subject {
   id: string;
@@ -8,4 +14,9 @@ export class Subject {
   level: FormationLevel;
   formationCenter: FormationCenter;
   formationCenterId: string;
+  course: Course;
+  courseId: string;
+  formation: Formation;
+  formationId: string;
+  interventions: Intervention[];
 }
