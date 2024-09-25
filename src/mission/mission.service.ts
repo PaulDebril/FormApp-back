@@ -7,9 +7,7 @@ import { PrismaService } from '../prisma/prisma.service';
 export class MissionService {
   constructor(private prisma: PrismaService) {}
   create(createMissionDto: CreateMissionDto) {
-    return this.prisma.mission.create({
-      data: createMissionDto,
-    });
+    return 'This action adds a new mission';
   }
 
   findAll() {
