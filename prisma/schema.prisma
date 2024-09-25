@@ -85,12 +85,12 @@ model Contract {
 model Contact {
   id                String           @id @default(cuid())
   name              String
-  photo             String
+  photo             String?
   email             String
-  phone             String
+  phone             String?
   role              String
-  linkedin          String
-  comment           String
+  linkedin          String?
+  comment           String?
   createdAt         DateTime         @default(now())
   FormationCenter   FormationCenter? @relation(fields: [formationCenterId], references: [id])
   formationCenterId String?
