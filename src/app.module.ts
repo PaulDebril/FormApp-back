@@ -13,6 +13,7 @@ import { PricingModule } from './pricing/pricing.module';
 import { SubjectModule } from './subject/subject.module';
 import { TaskModule } from './task/task.module';
 import { InterventionModule } from './intervention/intervention.module';
+import { ContractModule } from "./contract/contract.module";
 
 @Module({
   imports: [
@@ -29,6 +30,7 @@ import { InterventionModule } from './intervention/intervention.module';
     PricingModule,
     SubjectModule,
     TaskModule,
+    ContractModule,
   ],
   controllers: [AppController],
   providers: [AppService],
