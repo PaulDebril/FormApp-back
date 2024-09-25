@@ -1,28 +1,37 @@
 import { Injectable } from '@nestjs/common';
 import { CreateInterventionDto } from './dto/create-intervention.dto';
 import { UpdateInterventionDto } from './dto/update-intervention.dto';
-import { PrismaService } from "../prisma/prisma.service";
+import { PrismaService } from '../prisma/prisma.service';
 
 @Injectable()
 export class InterventionService {
   constructor(private prisma: PrismaService) {}
   create(createInterventionDto: CreateInterventionDto) {
-    return 'This action adds a new intervention';
+    return this.prisma.intervention.create({
+      data: createInterventionDto,
+    });
   }
 
   findAll() {
-    return `This action returns all intervention`;
+    return this.prisma.intervention.findMany();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} intervention`;
+  findOne(id: string) {
+    return this.prisma.intervention.findUnique({
+      where: { id },
+    });
   }
 
-  update(id: number, updateInterventionDto: UpdateInterventionDto) {
-    return `This action updates a #${id} intervention`;
+  update(id: string, updateInterventionDto: UpdateInterventionDto) {
+    return this.prisma.intervention.update({
+      where: { id },
+      data: updateInterventionDto,
+    });
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} intervention`;
+  remove(id: string) {
+    return this.prisma.intervention.delete({
+      where: { id },
+    });
   }
 }

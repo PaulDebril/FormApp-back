@@ -1,28 +1,31 @@
 import { Injectable } from '@nestjs/common';
 import { CreateFormationDto } from './dto/create-formation.dto';
 import { UpdateFormationDto } from './dto/update-formation.dto';
-import { PrismaService } from "../prisma/prisma.service";
+import { PrismaService } from '../prisma/prisma.service';
 
 @Injectable()
 export class FormationService {
   constructor(private prisma: PrismaService) {}
   create(createFormationDto: CreateFormationDto) {
-    return 'This action adds a new formation';
+    return this.prisma.formation.create({ data: createFormationDto });
   }
 
   findAll() {
-    return `This action returns all formation`;
+    return this.prisma.formation.findMany();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} formation`;
+  findOne(id: string) {
+    return this.prisma.formation.findUnique({ where: { id } });
   }
 
-  update(id: number, updateFormationDto: UpdateFormationDto) {
-    return `This action updates a #${id} formation`;
+  update(id: string, updateFormationDto: UpdateFormationDto) {
+    return this.prisma.formation.update({
+      where: { id },
+      data: updateFormationDto,
+    });
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} formation`;
+  remove(id: string) {
+    return this.prisma.formation.delete({ where: { id } });
   }
 }

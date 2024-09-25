@@ -1,28 +1,37 @@
 import { Injectable } from '@nestjs/common';
 import { CreateSubjectDto } from './dto/create-subject.dto';
 import { UpdateSubjectDto } from './dto/update-subject.dto';
-import { PrismaService } from "../prisma/prisma.service";
+import { PrismaService } from '../prisma/prisma.service';
 
 @Injectable()
 export class SubjectService {
   constructor(private prisma: PrismaService) {}
   create(createSubjectDto: CreateSubjectDto) {
-    return 'This action adds a new subject';
+    return this.prisma.subject.create({
+      data: createSubjectDto,
+    });
   }
 
   findAll() {
-    return `This action returns all subject`;
+    return this.prisma.subject.findMany();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} subject`;
+  findOne(id: string) {
+    return this.prisma.subject.findUnique({
+      where: { id },
+    });
   }
 
-  update(id: number, updateSubjectDto: UpdateSubjectDto) {
-    return `This action updates a #${id} subject`;
+  update(id: string, updateSubjectDto: UpdateSubjectDto) {
+    return this.prisma.subject.update({
+      where: { id },
+      data: updateSubjectDto,
+    });
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} subject`;
+  remove(id: string) {
+    return this.prisma.subject.delete({
+      where: { id },
+    });
   }
 }
