@@ -10,7 +10,8 @@ import {
 import { FormationService } from './formation.service';
 import { CreateFormationDto } from './dto/create-formation.dto';
 import { UpdateFormationDto } from './dto/update-formation.dto';
-
+import { ApiTags } from '@nestjs/swagger';
+@ApiTags('Formation')
 @Controller('formation')
 export class FormationController {
   constructor(private readonly formationService: FormationService) {}

@@ -10,7 +10,8 @@ import {
 import { InterventionService } from './intervention.service';
 import { CreateInterventionDto } from './dto/create-intervention.dto';
 import { UpdateInterventionDto } from './dto/update-intervention.dto';
-
+import { ApiTags } from '@nestjs/swagger';
+@ApiTags('Intervention')
 @Controller('intervention')
 export class InterventionController {
   constructor(private readonly interventionService: InterventionService) {}
