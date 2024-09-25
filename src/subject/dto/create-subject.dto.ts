@@ -9,7 +9,7 @@ export class CreateSubjectDto {
   @ApiProperty({ enum: FormationLevel })
   level: FormationLevel;
   @ApiPropertyOptional()
-  courseId?: string; 
+  courseId?: string;
   @ApiPropertyOptional()
   formationId?: string;
   @ApiPropertyOptional()

@@ -12,13 +12,13 @@ export class CreateCourseDto {
   category: string;
 
   @ApiProperty({ enum: CourseMode })
-  mode: CourseMode; 
+  mode: CourseMode;
   @ApiProperty()
   space: string;
 
   @ApiPropertyOptional()
-  subjectIds?: string[]; 
+  subjectIds?: string[];
 
   @ApiPropertyOptional()
-  interventionIds?: string[]; 
+  interventionIds?: string[];
 }

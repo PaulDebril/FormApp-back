@@ -1,5 +1,5 @@
 import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
-import { FormationLevel } from '@prisma/client'; 
+import { FormationLevel } from '@prisma/client';
 
 export class CreateFormationDto {
   @ApiProperty()
@@ -9,13 +9,13 @@ export class CreateFormationDto {
   url: string;
 
   @ApiProperty({ enum: FormationLevel })
-  level: FormationLevel; 
+  level: FormationLevel;
 
   @ApiPropertyOptional()
   documents?: string[];
 
   @ApiPropertyOptional()
-  formationCenterId?: string; 
+  formationCenterId?: string;
 
   @ApiPropertyOptional()
   subjectIds?: string[];
