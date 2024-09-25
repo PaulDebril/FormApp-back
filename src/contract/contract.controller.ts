@@ -28,7 +28,7 @@ export class ContractController {
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.contractService.findOne(+id);
+    return this.contractService.findOne(id);
   }
 
   @Patch(':id')
@@ -36,11 +36,11 @@ export class ContractController {
     @Param('id') id: string,
     @Body() updateContractDto: UpdateContractDto,
   ) {
-    return this.contractService.update(+id, updateContractDto);
+    return this.contractService.update(id, updateContractDto);
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.contractService.remove(+id);
+    return this.contractService.remove(id);
   }
 }

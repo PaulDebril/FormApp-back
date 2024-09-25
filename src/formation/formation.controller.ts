@@ -28,7 +28,7 @@ export class FormationController {
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.formationService.findOne(+id);
+    return this.formationService.findOne(id);
   }
 
   @Patch(':id')
@@ -36,11 +36,11 @@ export class FormationController {
     @Param('id') id: string,
     @Body() updateFormationDto: UpdateFormationDto,
   ) {
-    return this.formationService.update(+id, updateFormationDto);
+    return this.formationService.update(id, updateFormationDto);
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.formationService.remove(+id);
+    return this.formationService.remove(id);
   }
 }

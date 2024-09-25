@@ -28,7 +28,7 @@ export class InterventionController {
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.interventionService.findOne(+id);
+    return this.interventionService.findOne(id);
   }
 
   @Patch(':id')
@@ -36,11 +36,11 @@ export class InterventionController {
     @Param('id') id: string,
     @Body() updateInterventionDto: UpdateInterventionDto,
   ) {
-    return this.interventionService.update(+id, updateInterventionDto);
+    return this.interventionService.update(id, updateInterventionDto);
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.interventionService.remove(+id);
+    return this.interventionService.remove(id);
   }
 }
