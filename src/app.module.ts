@@ -5,6 +5,7 @@ import { PrismaModule } from './prisma/prisma.module';
 import { FormationCenterModule } from './formation-center/formation-center.module';
 import { InfoModule } from './info/info.module';
 import { IntermediaireModule } from './intermediaire/intermediaire.module';
+import { MissionModule } from './mission/mission.module';
 
 @Module({
   imports: [
@@ -12,6 +13,7 @@ import { IntermediaireModule } from './intermediaire/intermediaire.module';
     FormationCenterModule,
     InfoModule,
     IntermediaireModule,
+    MissionModule,
   ],
   controllers: [AppController],
   providers: [AppService],
