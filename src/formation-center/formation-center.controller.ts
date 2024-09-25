@@ -10,7 +10,9 @@ import {
 import { FormationCenterService } from './formation-center.service';
 import { CreateFormationCenterDto } from './dto/create-formation-center.dto';
 import { UpdateFormationCenterDto } from './dto/update-formation-center.dto';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('FormationCenter')
 @Controller('formation-center')
 export class FormationCenterController {
   constructor(
