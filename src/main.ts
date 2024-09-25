@@ -10,6 +10,7 @@ async function bootstrap() {
     .setVersion('1.0')
     .addTag('FormationCenter')
     .addTag('Info')
+    .addTag('Intermediaire')
     .build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, document);
