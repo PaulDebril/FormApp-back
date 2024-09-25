@@ -1,4 +1,4 @@
-import { FormationCenter } from '@prisma/client';
+import { Contact, FormationCenter, Intervention, Pricing } from "@prisma/client";
 
 export class Intermediaire {
   id: string;
@@ -13,4 +13,7 @@ export class Intermediaire {
   createdAt: Date;
   formationCenter: FormationCenter;
   formationCenterId: string;
+  contacts: Contact[];
+  pricing: Pricing[];
+  intervention: Intervention[];
 }
