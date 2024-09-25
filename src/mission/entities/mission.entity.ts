@@ -1,4 +1,4 @@
-import { FormationCenter, MissionState } from '@prisma/client';
+import { Contract, FormationCenter, Intervention, MissionState, Task } from "@prisma/client";
 
 export class Mission {
   id: string;
@@ -11,4 +11,8 @@ export class Mission {
   createdAt: Date;
   formationCenter: FormationCenter;
   formationCenterId: string;
+  interventions: Intervention[];
+  contract: Contract;
+  contractId: string;
+  tasks: Task[];
 }
