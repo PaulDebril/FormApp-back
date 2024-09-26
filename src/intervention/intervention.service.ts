@@ -19,9 +19,9 @@ export class InterventionService {
         Mission: true,
         Subject: true,
         Course: true,
-        Intermediaire: true,
-        Pricing: true,
-        Contact: true,
+        intermediaire: true,
+        pricing: true,
+        contact: true,
       },
     });
   }
@@ -34,9 +34,9 @@ export class InterventionService {
         Mission: true,
         Subject: true,
         Course: true,
-        Intermediaire: true,
-        Pricing: true,
-        Contact: true,
+        intermediaire: true,
+        pricing: true,
+        contact: true,
       },
     });
   }

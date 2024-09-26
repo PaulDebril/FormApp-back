@@ -15,9 +15,9 @@ export class PricingService {
   findAll() {
     return this.prisma.pricing.findMany({
       include: {
-        formationCenter: true,
+        FormationCenter: true,
         intermediaire: true,
-        interventions: true,
+        Intervention: true,
       },
     });
   }
@@ -26,9 +26,9 @@ export class PricingService {
     return this.prisma.pricing.findUnique({
       where: { id },
       include: {
-        formationCenter: true,
+        FormationCenter: true,
         intermediaire: true,
-        interventions: true,
+        Intervention: true,
       },
     });
   }

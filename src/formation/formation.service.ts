@@ -13,7 +13,7 @@ export class FormationService {
   findAll() {
     return this.prisma.formation.findMany({
       include: {
-        formationCenter: true,
+        FormationCenter: true,
         subjects: true,
       },
     });
@@ -23,7 +23,7 @@ export class FormationService {
     return this.prisma.formation.findUnique({
       where: { id },
       include: {
-        formationCenter: true,
+        FormationCenter: true,
         subjects: true,
       },
     });

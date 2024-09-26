@@ -16,9 +16,9 @@ export class IntermediaireService {
     return this.prisma.intermediaire.findMany({
       include: {
         contacts: true,
-        pricing: true,
-        intervention: true,
-        formationCenter: true,
+        Pricing: true,
+        Intervention: true,
+        FormationCenter: true,
       },
     });
   }
@@ -28,9 +28,9 @@ export class IntermediaireService {
       where: { id },
       include: {
         contacts: true,
-        pricing: true,
-        intervention: true,
-        formationCenter: true,
+        Pricing: true,
+        Intervention: true,
+        FormationCenter: true,
       },
     });
   }

@@ -13,7 +13,7 @@ export class MissionService {
   findAll() {
     return this.prisma.mission.findMany({
       include: {
-        formationCenter: true,
+        FormationCenter: true,
         interventions: true,
         contract: true,
         tasks: true,
@@ -25,7 +25,7 @@ export class MissionService {
     return this.prisma.mission.findUnique({
       where: { id },
       include: {
-        formationCenter: true,
+        FormationCenter: true,
         interventions: true,
         contract: true,
         tasks: true,
