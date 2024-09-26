@@ -13,12 +13,19 @@ export class InfoService {
   }
 
   findAll() {
-    return this.prisma.info.findMany();
+    return this.prisma.info.findMany({
+      include: {
+        formationCenter: true,
+      },
+    });
   }
 
   findOne(id: string) {
     return this.prisma.info.findUnique({
       where: { id },
+      include: {
+        formationCenter: true,
+      },
     });
   }
 

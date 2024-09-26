@@ -11,11 +11,20 @@ export class CourseService {
   }
 
   findAll() {
-    return this.prisma.course.findMany();
+    return this.prisma.course.findMany({
+      include: {
+        subjects: true,
+      },
+    });
   }
 
   findOne(id: string) {
-    return this.prisma.course.findUnique({ where: { id } });
+    return this.prisma.course.findUnique({
+      where: { id },
+      include: {
+        subjects: true,
+      },
+    });
   }
 
   update(id: string, updateCourseDto: UpdateCourseDto) {

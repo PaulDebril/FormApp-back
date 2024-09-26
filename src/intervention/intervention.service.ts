@@ -13,12 +13,31 @@ export class InterventionService {
   }
 
   findAll() {
-    return this.prisma.intervention.findMany();
+    return this.prisma.intervention.findMany({
+      include: {
+        FormationCenter: true,
+        Mission: true,
+        Subject: true,
+        Course: true,
+        Intermediaire: true,
+        Pricing: true,
+        Contact: true,
+      },
+    });
   }
 
   findOne(id: string) {
     return this.prisma.intervention.findUnique({
       where: { id },
+      include: {
+        FormationCenter: true,
+        Mission: true,
+        Subject: true,
+        Course: true,
+        Intermediaire: true,
+        Pricing: true,
+        Contact: true,
+      },
     });
   }
 

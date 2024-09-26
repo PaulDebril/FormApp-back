@@ -13,12 +13,23 @@ export class PricingService {
   }
 
   findAll() {
-    return this.prisma.pricing.findMany();
+    return this.prisma.pricing.findMany({
+      include: {
+        formationCenter: true,
+        intermediaire: true,
+        interventions: true,
+      },
+    });
   }
 
   findOne(id: string) {
     return this.prisma.pricing.findUnique({
       where: { id },
+      include: {
+        formationCenter: true,
+        intermediaire: true,
+        interventions: true,
+      },
     });
   }
 

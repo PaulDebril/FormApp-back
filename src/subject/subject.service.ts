@@ -13,12 +13,23 @@ export class SubjectService {
   }
 
   findAll() {
-    return this.prisma.subject.findMany();
+    return this.prisma.subject.findMany({
+      include: {
+        Course: true,
+        formationCenter: true,
+        interventions: true,
+      },
+    });
   }
 
   findOne(id: string) {
     return this.prisma.subject.findUnique({
       where: { id },
+      include: {
+        Course: true,
+        formationCenter: true,
+        interventions: true,
+      },
     });
   }
 

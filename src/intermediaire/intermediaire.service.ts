@@ -13,12 +13,25 @@ export class IntermediaireService {
   }
 
   findAll() {
-    return this.prisma.intermediaire.findMany();
+    return this.prisma.intermediaire.findMany({
+      include: {
+        contacts: true,
+        pricing: true,
+        intervention: true,
+        formationCenter: true,
+      },
+    });
   }
 
   findOne(id: string) {
     return this.prisma.intermediaire.findUnique({
       where: { id },
+      include: {
+        contacts: true,
+        pricing: true,
+        intervention: true,
+        formationCenter: true,
+      },
     });
   }
 

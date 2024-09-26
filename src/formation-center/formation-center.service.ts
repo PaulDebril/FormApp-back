@@ -12,12 +12,33 @@ export class FormationCenterService {
     });
   }
   findAll() {
-    return this.prisma.formationCenter.findMany();
+    return this.prisma.formationCenter.findMany({
+      include: {
+        contacts: true,
+        formations: true,
+        intermediaires: true,
+        interventions: true,
+        pricings: true,
+        Info: true,
+        Mission: true,
+        Subject: true,
+      },
+    });
   }
 
   findOne(id: string) {
     return this.prisma.formationCenter.findUnique({
       where: { id },
+      include: {
+        contacts: true,
+        formations: true,
+        intermediaires: true,
+        interventions: true,
+        pricings: true,
+        Info: true,
+        Mission: true,
+        Subject: true,
+      },
     });
   }
 

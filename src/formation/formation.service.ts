@@ -11,11 +11,22 @@ export class FormationService {
   }
 
   findAll() {
-    return this.prisma.formation.findMany();
+    return this.prisma.formation.findMany({
+      include: {
+        formationCenter: true,
+        subjects: true,
+      },
+    });
   }
 
   findOne(id: string) {
-    return this.prisma.formation.findUnique({ where: { id } });
+    return this.prisma.formation.findUnique({
+      where: { id },
+      include: {
+        formationCenter: true,
+        subjects: true,
+      },
+    });
   }
 
   update(id: string, updateFormationDto: UpdateFormationDto) {

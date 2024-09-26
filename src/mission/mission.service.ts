@@ -11,12 +11,25 @@ export class MissionService {
   }
 
   findAll() {
-    return this.prisma.mission.findMany();
+    return this.prisma.mission.findMany({
+      include: {
+        formationCenter: true,
+        interventions: true,
+        contract: true,
+        tasks: true,
+      },
+    });
   }
 
   findOne(id: string) {
     return this.prisma.mission.findUnique({
       where: { id },
+      include: {
+        formationCenter: true,
+        interventions: true,
+        contract: true,
+        tasks: true,
+      },
     });
   }
 
