@@ -11,11 +11,7 @@ export class ContractService {
   }
 
   findAll() {
-    return this.prisma.contract.findMany({
-      include: {
-        missions: true,
-      },
-    });
+    return this.prisma.contract.findMany();
   }
 
   findOne(id: string) {
